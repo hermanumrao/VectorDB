@@ -1,6 +1,7 @@
 #ifndef GLOVE_H
 #define GLOVE_H
 
+#include "data_handle.hpp"
 #include "parquet_handle.hpp"
 #include <cmath>
 #include <iostream>
@@ -17,7 +18,7 @@ build_cooccurrance_matrix(const std::vector<std::string> &tokens,
 
 void initialize_vector(std::vector<double> &vec);
 
-void train_glove(
+void train_glove_article(
     const std::unordered_map<std::string,
                              std::unordered_map<std::string, double>>
         &cooccurrance_matrix,

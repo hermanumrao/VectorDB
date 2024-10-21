@@ -1,4 +1,3 @@
-#include "include/data_handle.hpp"
 #include "include/glove.hpp"
 #include <iostream>
 #include <string>
@@ -12,7 +11,7 @@ int main(int argc, char *argv[]) {
   std::string output_model = curDir_file + "models/glove_model.json";
 
   int vector_size = 300;
-  int interations = 50;
+  int iterations = 50;
   double LR = 0.05;
   double x_max = 100.0;
   double alpha = 0.75;
@@ -31,8 +30,8 @@ int main(int argc, char *argv[]) {
     std::vector<std::string> tokens = tokenize_data_article(article_txt);
     std::unordered_map<std::string, std::unordered_map<std::string, double>>
         cooccurrance_matrix = build_cooccurrance_matrix(tokens, 7);
-    train_glove(cooccurrance_matrix, word_vectors, vector_size, interations, LR,
-                x_max, alpha);
+    train_glove_article(cooccurrance_matrix, word_vectors, vector_size,
+                        iterations, LR, x_max, alpha);
   }
   std::cout << "completed processing dataset" << std::endl;
   save_word_vec2json(word_vectors, output_model);

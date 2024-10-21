@@ -46,7 +46,7 @@ void initialize_vector(std::vector<double> &vec) {
   }
 }
 // use the initialized hidden layer vector to train the model
-void train_glove(
+void train_glove_article(
     const std::unordered_map<std::string,
                              std::unordered_map<std::string, double>>
         &cooccurrance_matrix,
