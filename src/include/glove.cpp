@@ -1,5 +1,7 @@
 #include "glove.hpp"
 #include <iostream>
+#include <string>
+#include <vector>
 
 std::vector<std::string> tokenize_data_article(const std::string &text) {
 
@@ -102,6 +104,30 @@ void train_glove_article(
       }
     }
   }
+}
+
+void train_glove(const std::string &cleaned_data_file,
+                 const std::string &output_model, int vector_size,
+                 int iterations, double LR, double x_max, double alpha) {
+  // load the cleaned dataset
+  json cleaned_data = load_json(cleaned_data_file);
+
+  std::unordered_map<std::string, std::vector<double>> word_vectors;
+
+  // parse through each article in the dataset
+  std::cout << "begening to process the data" << std::endl;
+  int cnt = 0;
+  for (const auto &entry : cleaned_data) {
+    std::cout << "@ article no. :" << cnt++ << std::endl;
+    std::string article_txt = entry["article"];
+    std::vector<std::string> tokens = tokenize_data_article(article_txt);
+    std::unordered_map<std::string, std::unordered_map<std::string, double>>
+        cooccurrance_matrix = build_cooccurrance_matrix(tokens, 7);
+    train_glove_article(cooccurrance_matrix, word_vectors, vector_size,
+                        iterations, LR, x_max, alpha);
+  }
+  std::cout << "completed processing dataset" << std::endl;
+  save_word_vec2json(word_vectors, output_model);
 }
 
 // function to save data for later retriveval

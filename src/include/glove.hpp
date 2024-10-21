@@ -25,6 +25,10 @@ void train_glove_article(
     std::unordered_map<std::string, std::vector<double>> &word_vectors,
     int vector_size, int iterations, double LR, double x_max, double alpha);
 
+void train_glove(const std::string &cleaned_data_file,
+                 const std::string &output_model, int vector_size,
+                 int iterations, double LR, double x_max, double alpha);
+
 void save_word_vec2json(
     const std::unordered_map<std::string, std::vector<double>> &word_vectors,
     const std::string &output_file);

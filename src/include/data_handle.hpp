@@ -14,6 +14,6 @@ namespace fs = std::filesystem;
 
 json load_json(const std::string &filename);
 
-json setup_data(std::string dataset, std::string cleaned_data);
+void setup_data(std::string &dataset, std::string &cleaned_data);
 
 #endif // !DATA_HANDLE_H

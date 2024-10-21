@@ -13,10 +13,10 @@ json load_json(const std::string &filename) {
   return data;
 }
 
-json setup_data(std::string &dataset, std::string &cleaned_data) {
+void setup_data(std::string &dataset, std::string &cleaned_data) {
   std::cout << "starting to read datasetfile at : " << dataset << std::endl;
   std::fstream outfile(cleaned_data);
-  if (access(cleaned_data.c_str(), F_OK) != -1) {
+  if (access(cleaned_data.c_str(), F_OK) != 0) {
     for (const auto &entry : fs::directory_iterator(dataset)) {
       if (entry.is_regular_file() && entry.path().extension() == ".parquet") {
         std::string parquet_file = entry.path().string();
@@ -28,9 +28,7 @@ json setup_data(std::string &dataset, std::string &cleaned_data) {
       }
     }
   } else
-    std::cout << "found json file for dataset at :" << cleaned_data;
-  // load data from json file.
-  std::cout << "reading data from json file";
-  json data = load_json(cleaned_data);
-  return data;
+    std::cout << "found json file for dataset at :" << cleaned_data
+              << "\n stopped preprocessing, moving on to training data"
+              << std::endl;
 }
