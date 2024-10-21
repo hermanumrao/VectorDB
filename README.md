@@ -82,27 +82,28 @@ after building and running this will be your dir structure
 
 ## steps for setup
 1. clone the repo
-   ``` bash
+	``` bash
    git clone https://github.com/hermanumrao/VectorDB-words.git 
    cd VectorDB-words
-```
+	```
+
 2. create required dirs
-   ```bash
+	```bash
    mkdir -p build dataset/cleaned dataset/download/ models
-```
+	```
 4. download the required dataset using git-lfs
-   ``` bash
+	``` bash
 	cd dataset/download/
 	# Make sure you have git-lfs installed (https://git-lfs.com)
 	git lfs install
 	git clone https://huggingface.co/datasets/fabiochiu/medium-articles
 	cd ../..
-```
+ 	```
 5. compile the project
-   ``` bash
+	``` bash
    make
-```
+	```
 6. run the file
-   ```
+	```
    ./build/main
-```
+	```
