@@ -5,8 +5,11 @@
 #include "parquet_handle.hpp"
 #include <cmath>
 #include <iostream>
+#include <mutex>
+#include <queue>
 #include <random>
 #include <string>
+#include <thread>
 #include <unordered_map>
 #include <vector>
 

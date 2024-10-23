@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
   std::string datasetDir_file = curDir_file + "dataset/";
   std::string dataset_file = datasetDir_file + "download/medium_articles/data/";
   std::string cleaned_data_file =
-      datasetDir_file + "cleaned/medium_articles2.json";
+      datasetDir_file + "cleaned/medium_articles.json";
   std::string output_model = curDir_file + "models/glove_model.json";
 
   int vector_size = 300;
